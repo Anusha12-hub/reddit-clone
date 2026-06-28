@@ -157,7 +157,7 @@ svg {
   display: flex;
   align-items: center;
   gap: var(--space-xs);
-  flex-shrink: 0;
+  flex: 1; /* This tells it to take up equal space on the left */
 }
 
 /* Logo */
@@ -173,10 +173,12 @@ svg {
   height: 36px;
 }
 
+/* Update .logo-text to match the standalone weight */
 .logo-text {
-  font-size: var(--font-size-lg);
+  font-size: 26px; /* Slightly larger since it stands alone */
   font-weight: 700;
-  color: var(--color-text);
+  color: #FFFFFF;
+  letter-spacing: -0.5px;
 }
 
 /* Home dropdown button */
@@ -205,80 +207,71 @@ svg {
    4. SEARCH BAR
    ============================================================ */
 .navbar__search {
-  flex: 1;
-  max-width: 640px;
+  flex: 0 1 640px; /* Gives it a max-width but prevents it from stretching endlessly */
+  width: 100%;
+  margin: 0 auto; /* Centers it perfectly between the left and right boundaries */
 }
 
+/* Update the search wrapper */
 .search-wrap {
   display: flex;
   align-items: center;
   gap: var(--space-xs);
   height: 40px;
   padding: 0 var(--space-xs);
-  background: var(--color-bg);
-  border: 2px solid var(--color-primary);
+  background: #1A1A1B; /* Dark background inside */
+  border: 1px solid var(--color-primary); /* Thinner border */
   border-radius: var(--radius-pill);
-  box-shadow: 0 0 6px rgba(255, 69, 0, 0.2);
 }
+
 .search-wrap:focus-within {
-  box-shadow: 0 0 10px rgba(255, 69, 0, 0.4);
+  box-shadow: none; /* Removed the heavy glowing shadow */
+  background: var(--color-bg);
 }
-
-.search-snoo {
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  border: 2px solid var(--color-primary);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.search-snoo svg {
-  width: 32px;
-  height: 32px;
-}
-
+/* Reset the default browser input styles */
 .search-input {
   flex: 1;
   background: transparent;
   border: none;
-  outline: none;
   color: var(--color-text);
-  font-family: var(--font-main);
   font-size: var(--font-size-md);
-  text-align: center;
-}
-.search-input::placeholder {
-  color: var(--color-text-muted);
-}
-.search-input:focus {
-  text-align: left;
+  outline: none;
+  width: 100%;
 }
 
+/* Style the new vertical divider */
+.search-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--color-border);
+  margin: 0 var(--space-xs);
+  flex-shrink: 0;
+}
+
+/* Update the Ask Button */
 .search-ask-btn {
   display: flex;
   align-items: center;
   gap: 5px;
   padding: 5px var(--space-md);
   border-radius: var(--radius-pill);
-  background: var(--color-btn);
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
+  background: transparent; /* Removed solid background */
+  border: none; /* Removed border */
+  color: var(--color-primary); /* Text is now orange */
   font-size: var(--font-size-sm);
   font-weight: 700;
   flex-shrink: 0;
   white-space: nowrap;
 }
+
 .search-ask-btn:hover {
-  background: var(--color-hover);
-  border-color: var(--color-primary);
+  background: rgba(255, 69, 0, 0.1); /* Subtle transparent hover */
+  border-color: transparent;
 }
 
-.ask-star {
-  color: var(--color-primary);
-  font-size: 14px;
+.ask-sparkle {
+  width: 16px;
+  height: 16px;
 }
 
 
@@ -288,9 +281,9 @@ svg {
 .navbar__right {
   display: flex;
   align-items: center;
+  justify-content: flex-end; /* Pushes the profile and icons to the far right edge */
   gap: var(--space-xs);
-  margin-left: auto;
-  flex-shrink: 0;
+  flex: 1; /* This tells it to take up equal space on the right */
 }
 
 .nav-icon-btn {
@@ -332,25 +325,29 @@ svg {
   justify-content: center;
 }
 
+/* Update the Create Button to match the plain text/icon look */
 .btn-create-post {
   display: flex;
   align-items: center;
   gap: var(--space-xs);
-  padding: 6px var(--space-md);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
+  padding: 6px 8px;
+  border: none; /* Removed pill border */
+  border-radius: var(--radius-md);
+  background: transparent;
   color: var(--color-text);
   font-size: var(--font-size-sm);
-  font-weight: 700;
+  font-weight: 600;
   white-space: nowrap;
 }
+
 .btn-create-post:hover {
   background: var(--color-hover);
-  border-color: var(--color-text);
+  border-color: transparent;
 }
+
 .btn-create-post svg {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 }
 
 .btn-premium {
@@ -374,15 +371,16 @@ svg {
 .user-profile {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-  padding: 4px var(--space-sm);
-  border: 1px solid transparent;
-  border-radius: var(--radius-md);
-  color: var(--color-text);
+  justify-content: center;
+  padding: 2px;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
 }
+
 .user-profile:hover {
-  border-color: var(--color-border);
-  background: var(--color-hover);
+  background: transparent;
+  opacity: 0.8; /* Simple opacity hover instead of a background box */
 }
 .user-profile .icon-chevron {
   width: 14px;
